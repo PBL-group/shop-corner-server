@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const { readdirSync } = require("fs")
-const morgan = require('morgan')
 const cors = require('cors')
 require('dotenv').config()
 
@@ -20,11 +19,10 @@ try {
 		useFindAndModify: true
 	}, () => console.log(" mongodb is connected through mongoose"))
 } catch (error) {
-	console.group(`could not connect b/c of ${error}`);
+	console.error(`could not connect b/c of ${error}`);
 }
 // Middlewares
 
-app.use(morgan("dev"))
 app.use(express.json())
 app.use(cors())
 

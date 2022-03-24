@@ -1,7 +1,8 @@
 const mongoose = require("mongoose")
-const { ObjectId } = mongoose.Schema
+const { Schema, model } = mongoose
+const { ObjectId } = Schema
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
     name: String,
     username: String,
     email: {
@@ -10,7 +11,7 @@ const UserSchema = new mongoose.Schema({
         index: true
     },
     address: String,
-    // wishlist: [{type: ObjectId, ref: "Product"}],
+    wishlist: [{type: ObjectId, ref: "Product"}],
 }, {timestamps: true})
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = model('User', UserSchema)
